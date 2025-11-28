@@ -3,180 +3,965 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تاریخ جهان - دایرةالمعارف تاریخ</title>
+    <title>جهان دانش - دایرةالمعارف پیشرفته تاریخ و علم</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        :root { --primary: #2c3e50; --secondary: #3498db; --accent: #e74c3c; --light: #ecf0f1; --dark: #2c3e50; }
-        body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #333; line-height: 1.6; min-height: 100vh; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
-        header { background: rgba(255, 255, 255, 0.95); padding: 2rem 0; text-align: center; border-radius: 20px; margin-bottom: 2rem; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); position: relative; overflow: hidden; }
-        header::before { content: ''; position: absolute; top: 0; right: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--accent), var(--secondary)); }
-        h1 { color: var(--primary); font-size: 3.5rem; margin-bottom: 0.5rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.1); }
-        .subtitle { color: #7f8c8d; font-size: 1.3rem; margin-bottom: 1rem; }
-        .creator { color: var(--accent); font-weight: bold; font-size: 1.1rem; }
-        .search-container { background: rgba(255, 255, 255, 0.9); padding: 1.5rem; border-radius: 15px; margin-bottom: 2rem; text-align: center; }
-        .search-box { display: flex; max-width: 600px; margin: 0 auto; }
-        .search-box input { flex: 1; padding: 15px 20px; border: 2px solid var(--secondary); border-radius: 50px 0 0 50px; font-size: 1.1rem; outline: none; }
-        .search-box button { background: var(--secondary); color: white; border: none; padding: 0 30px; border-radius: 0 50px 50px 0; cursor: pointer; font-size: 1.2rem; transition: all 0.3s ease; }
-        .search-box button:hover { background: #2980b9; }
-        .nav { background: rgba(255, 255, 255, 0.9); padding: 1rem; border-radius: 15px; margin-bottom: 2rem; }
-        .nav-list { list-style: none; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
-        .nav-list a { text-decoration: none; color: var(--dark); font-weight: bold; padding: 0.8rem 1.5rem; border-radius: 25px; transition: all 0.3s ease; background: var(--light); display: flex; align-items: center; gap: 0.5rem; }
-        .nav-list a:hover { background: var(--secondary); color: white; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4); }
-        .main-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
-        .section { background: rgba(255, 255, 255, 0.95); padding: 2rem; border-radius: 20px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; position: relative; overflow: hidden; }
-        .section::before { content: ''; position: absolute; top: 0; right: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--accent), var(--secondary)); }
-        .section:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); }
-        .section h2 { color: var(--primary); margin-bottom: 1.5rem; border-bottom: 3px solid var(--secondary); padding-bottom: 0.5rem; font-size: 1.8rem; display: flex; align-items: center; gap: 0.5rem; }
-        .timeline { margin-top: 1rem; }
-        .timeline-item { margin-bottom: 1.5rem; padding-right: 1.5rem; border-right: 3px solid var(--secondary); position: relative; }
-        .timeline-item::before { content: ''; position: absolute; right: -8px; top: 0; width: 14px; height: 14px; background: var(--accent); border-radius: 50%; }
-        .year { font-weight: bold; color: var(--accent); font-size: 1.1rem; display: inline-block; margin-bottom: 0.3rem; }
-        footer { text-align: center; background: rgba(255, 255, 255, 0.9); padding: 2.5rem; border-radius: 20px; margin-top: 3rem; }
-        .quote { font-style: italic; color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --purple: #9b59b6;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --music: #e84393;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+        
+        body.dark-mode {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: #ecf0f1;
+        }
+        
+        body.grayscale {
+            filter: grayscale(100%);
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* هدر پیشرفته */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            padding: 2rem 0;
+            text-align: center;
+            border-radius: 25px;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        body.dark-mode header {
+            background: rgba(44, 62, 80, 0.98);
+            color: white;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent), var(--secondary), var(--success), var(--purple), var(--music));
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .settings-panel {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .setting-btn {
+            background: var(--light);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .setting-btn:hover {
+            transform: scale(1.05);
+            background: var(--secondary);
+            color: white;
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        body.dark-mode h1 {
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .creator {
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.1rem;
+            background: rgba(231, 76, 60, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            display: inline-block;
+        }
+
+        /* پخش کننده موسیقی پیشرفته */
+        .music-player {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.dark-mode .music-player {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+        }
+
+        .music-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .music-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .music-btn {
+            background: var(--music);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+            background: #fd79a8;
+        }
+
+        .playlist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .song-item {
+            background: linear-gradient(135deg, var(--light), #ffffff);
+            padding: 1rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        body.dark-mode .song-item {
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            color: white;
+        }
+
+        .song-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--music);
+        }
+
+        .song-item.playing {
+            background: linear-gradient(135deg, var(--music), #fd79a8);
+            color: white;
+        }
+        
+        /* تبلیغات فروشگاه */
+        .shop-banner {
+            background: linear-gradient(135deg, #ff7675, #fd79a8);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .shop-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .shop-banner h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .shop-banner p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .banner-btn {
+            background: white;
+            color: #ff7675;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .banner-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.3);
+        }
+        
+        /* ناوبری اصلی */
+        .main-nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.dark-mode .main-nav {
+            background: rgba(44, 62, 80, 0.95);
+            color: white;
+        }
+        
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .nav-card {
+            background: linear-gradient(135deg, var(--light), #ffffff);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+        }
+        
+        body.dark-mode .nav-card {
+            background: linear-gradient(135deg, #34495e, #2c3e50);
+            color: white;
+        }
+        
+        .nav-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--secondary);
+        }
+        
+        .nav-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .nav-card.history { background: linear-gradient(135deg, #ffeaa7, #fab1a0); }
+        .nav-card.games { background: linear-gradient(135deg, #81ecec, #74b9ff); }
+        .nav-card.cars { background: linear-gradient(135deg, #a29bfe, #fd79a8); }
+        .nav-card.shop { background: linear-gradient(135deg, #55efc4, #00b894); }
+        .nav-card.ships { background: linear-gradient(135deg, #74b9ff, #0984e3); }
+        .nav-card.music { background: linear-gradient(135deg, #fd79a8, #e84393); }
+        .nav-card.science { background: linear-gradient(135deg, #a29bfe, #6c5ce7); }
+        
+        /* سیستم کارت‌های تعاملی */
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-header {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--secondary);
+            padding-bottom: 1rem;
+        }
+        
+        body.dark-mode .section-header {
+            color: #ecf0f1;
+            border-bottom-color: #3498db;
+        }
+        
+        .history-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .era-category {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        body.dark-mode .era-category {
+            background: #34495e;
+            color: white;
+        }
+        
+        .era-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        body.dark-mode .era-title {
+            color: #ecf0f1;
+        }
+        
+        .era-list {
+            list-style: none;
+        }
+        
+        .era-item {
+            padding: 0.8rem;
+            margin-bottom: 0.5rem;
+            background: var(--light);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-right: 4px solid transparent;
+        }
+        
+        body.dark-mode .era-item {
+            background: #2c3e50;
+        }
+        
+        .era-item:hover {
+            transform: translateX(-10px);
+            border-right-color: var(--accent);
+            background: var(--secondary);
+            color: white;
+        }
+        
+        /* مودال برای جزئیات */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 900px;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        body.dark-mode .modal-content {
+            background: #2c3e50;
+            color: white;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .modal-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        body.dark-mode .modal-title {
+            color: #ecf0f1;
+        }
+        
+        .modal-body {
+            line-height: 1.8;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 5rem;
+        }
+        
+        /* استایل‌های واکنش‌گرا */
         @media (max-width: 768px) {
-            .nav-list { flex-direction: column; gap: 0.8rem; }
-            h1 { font-size: 2.5rem; }
-            .main-content { grid-template-columns: 1fr; }
-            .search-box { flex-direction: column; gap: 1rem; }
-            .search-box input, .search-box button { border-radius: 50px; width: 100%; }
+            .header-top {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .history-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 95%;
+                padding: 1rem;
+            }
+
+            .playlist {
+                grid-template-columns: 1fr;
+            }
+            
+            .shop-banner h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>📚 دایرةالمعارف تاریخ جهان</h1>
-            <p class="subtitle">کشف اسرار گذشته، درک حال، ساختن آینده</p>
-            <p class="creator">طراحی و توسعه: کیارش سهولی</p>
+            <div class="header-top">
+                <div class="settings-panel">
+                    <button class="setting-btn" onclick="toggleDarkMode()">
+                        <i class="fas fa-moon"></i>
+                        حالت شب
+                    </button>
+                    <button class="setting-btn" onclick="toggleGrayscale()">
+                        <i class="fas fa-adjust"></i>
+                        سیاه و سفید
+                    </button>
+                    <button class="setting-btn" onclick="showSection('music')">
+                        <i class="fas fa-music"></i>
+                        آهنگ‌ها
+                    </button>
+                </div>
+                <div class="creator">طراحی و توسعه: کیارش سهولی</div>
+            </div>
+            
+            <h1>🌍 جهان دانش</h1>
+            <p class="subtitle">دایرةالمعارف پیشرفته تاریخ، علم و فناوری</p>
         </header>
 
-        <div class="search-container">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="جستجو در تاریخ... (مثال: هخامنشی، ماه، جنگ)">
-                <button onclick="searchHistory()"><i class="fas fa-search"></i> جستجو</button>
+        <!-- تبلیغات فروشگاه -->
+        <div class="shop-banner">
+            <h2>🛍 فروشگاه مطفا کالا</h2>
+            <p>مرجع خرید اینترنتی با بهترین قیمت‌ها و کیفیت عالی</p>
+            <a href="https://motafa-kala.com" class="banner-btn" target="_blank">
+                <i class="fas fa-shopping-cart"></i>
+                همین الان خرید کنید
+            </a>
+        </div>
+
+        <!-- پخش کننده موسیقی -->
+        <div class="music-player">
+            <div class="music-header">
+                <h3><i class="fas fa-music"></i> پخش کننده موسیقی</h3>
+                <div class="music-controls">
+                    <button class="music-btn" onclick="playPause()">
+                        <i class="fas fa-play" id="playBtn"></i>
+                    </button>
+                    <button class="music-btn" onclick="nextSong()">
+                        <i class="fas fa-forward"></i>
+                    </button>
+                    <span id="nowPlaying">آهنگ انتخاب نشده</span>
+                </div>
+            </div>
+            <div class="playlist">
+                <div class="song-item" onclick="playSong(0)">
+                    <strong>ایرانی: علی زند وکیلی - جاده</strong>
+                    <p>پاپ ایرانی | ۳:۴۵</p>
+                </div>
+                <div class="song-item" onclick="playSong(1)">
+                    <strong>خارجی: The Weeknd - Blinding Lights</strong>
+                    <p>پاپ/الکترونیک | ۳:۲۰</p>
+                </div>
+                <div class="song-item" onclick="playSong(2)">
+                    <strong>ایرانی: محسن یگانه - مگه نه</strong>
+                    <p>پاپ ایرانی | ۴:۱۵</p>
+                </div>
+                <div class="song-item" onclick="playSong(3)">
+                    <strong>خارجی: Dua Lipa - Don't Start Now</strong>
+                    <p>پاپ/دیسکو | ۳:۰۳</p>
+                </div>
             </div>
         </div>
 
-        <nav class="nav">
-            <ul class="nav-list">
-                <li><a href="#iran"><i class="fas fa-crown"></i> ایران باستان</a></li>
-                <li><a href="#space"><i class="fas fa-star"></i> ستاره‌ها و فضا</a></li>
-                <li><a href="#world"><i class="fas fa-globe"></i> تاریخ جهان</a></li>
-                <li><a href="#science"><i class="fas fa-flask"></i> تاریخ علم</a></li>
-                <li><a href="#art"><i class="fas fa-palette"></i> تاریخ هنر</a></li>
-                <li><a href="#war"><i class="fas fa-shield-alt"></i> جنگ‌های بزرگ</a></li>
-            </ul>
+        <!-- منوی اصلی -->
+        <nav class="main-nav">
+            <div class="nav-grid">
+                <a href="#" class="nav-card history" onclick="showSection('history')">
+                    <i class="fas fa-monument"></i>
+                    <h3>تاریخ جهان</h3>
+                    <p>تمدن‌های باستانی و امپراتوری‌ها</p>
+                </a>
+                
+                <a href="#" class="nav-card science" onclick="showSection('science')">
+                    <i class="fas fa-atom"></i>
+                    <h3>علم و دانش</h3>
+                    <p>اختراعات و اکتشافات بزرگ</p>
+                </a>
+                
+                <a href="#" class="nav-card games" onclick="showSection('games')">
+                    <i class="fas fa-chess"></i>
+                    <h3>بازی‌های فکری</h3>
+                    <p>آموزش و استراتژی بازی‌ها</p>
+                </a>
+
+                <a href="#" class="nav-card music" onclick="showSection('music')">
+                    <i class="fas fa-headphones"></i>
+                    <h3>موزیک و سرگرمی</h3>
+                    <p>آهنگ‌های ترند و بازی‌ها</p>
+                </a>
+                
+                <a href="#" class="nav-card shop" onclick="showSection('shop')">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>فروشگاه</h3>
+                    <p>مطفا کالا - خرید اینترنتی</p>
+                </a>
+            </div>
         </nav>
 
-        <main class="main-content">
-            <section id="iran" class="section">
-                <h2><i class="fas fa-crown"></i> تمدن ایران باستان</h2>
-                <p>یکی از کهن‌ترین و درخشان‌ترین تمدن‌های جهان با قدمتی بیش از ۷۰۰۰ سال</p>
-                <div class="timeline">
-                    <div class="timeline-item"><span class="year">۵۵۰ پیش از میلاد:</span><p>تأسیس شاهنشاهی هخامنشی به دست کوروش بزرگ - انتشار منشور حقوق بشر</p></div>
-                    <div class="timeline-item"><span class="year">۵۲۱ پیش از میلاد:</span><p>پادشاهی داریوش بزرگ - ساخت تخت جمشید و راه‌شاهی</p></div>
-                    <div class="timeline-item"><span class="year">۳۳۰ پیش از میلاد:</span><p>پایان امپراتوری هخامنشی با حمله اسکندر مقدونی</p></div>
-                    <div class="timeline-item"><span class="year">۲۲۴ پس از میلاد:</span><p>شکل‌گیری امپراتوری ساسانی توسط اردشیر بابکان</p></div>
-                    <div class="timeline-item"><span class="year">۶۵۱ پس از میلاد:</span><p>سقوط امپراتوری ساسانی و آغاز دوره اسلامی در ایران</p></div>
+        <!-- بخش تاریخ پیشرفته -->
+        <section id="history" class="content-section active">
+            <h2 class="section-header"><i class="fas fa-monument"></i> تاریخ جهان - تمام دوره‌ها</h2>
+            
+            <div class="history-grid">
+                <!-- ایران باستان -->
+                <div class="era-category">
+                    <h3 class="era-title"><i class="fas fa-crown"></i> ایران باستان</h3>
+                    <ul class="era-list">
+                        <li class="era-item" onclick="openDetailModal('h1')">👑 امپراتوری هخامنشی (۵۵۰-۳۳۰ پ.م)</li>
+                        <li class="era-item" onclick="openDetailModal('h2')">🏺 امپراتوری اشکانی (۲۴۷ پ.م-۲۲۴ م)</li>
+                        <li class="era-item" onclick="openDetailModal('h3')">⚔ امپراتوری ساسانی (۲۲۴-۶۵۱ م)</li>
+                        <li class="era-item" onclick="openDetailModal('h4')">📜 تمدن ایلام</li>
+                        <li class="era-item" onclick="openDetailModal('h5')">🔱 مادها</li>
+                    </ul>
                 </div>
-            </section>
 
-            <section id="space" class="section">
-                <h2><i class="fas fa-star"></i> اکتشافات فضایی</h2>
-                <p>سفر بشر به فراسوی زمین و کشف اسرار کیهان</p>
-                <div class="timeline">
-                    <div class="timeline-item"><span class="year">۱۵۴۳ میلادی:</span><p>نیکلاس کوپرنیک نظریه مرکزیت خورشید را منتشر کرد</p></div>
-                    <div class="timeline-item"><span class="year">۱۶۰۹ میلادی:</span><p>گالیله اولین تلسکوپ نجومی را ساخت و قمرهای مشتری را کشف کرد</p></div>
-                    <div class="timeline-item"><span class="year">۱۹۵۷ میلادی:</span><p>شوروی اسپوتنیک-۱، اولین ماهواره مصنوعی را به فضا پرتاب کرد</p></div>
-                    <div class="timeline-item"><span class="year">۱۹۶۱ میلادی:</span><p>یوری گاگارین اولین انسانی شد که به فضا سفر کرد</p></div>
-                    <div class="timeline-item"><span class="year">۱۹۶۹ میلادی:</span><p>نیل آرمسترانگ و باز آلدرین اولین انسان‌هایی شدند که روی ماه قدم گذاشتند</p></div>
+                <!-- روم و یونان -->
+                <div class="era-category">
+                    <h3 class="era-title"><i class="fas fa-archway"></i> روم و یونان</h3>
+                    <ul class="era-list">
+                        <li class="era-item" onclick="openDetailModal('h6')">🏛 امپراتوری روم</li>
+                        <li class="era-item" onclick="openDetailModal('h7')">🎭 یونان باستان</li>
+                        <li class="era-item" onclick="openDetailModal('h8')">⚔ اسکندر مقدونی</li>
+                        <li class="era-item" onclick="openDetailModal('h9')">🛡 اسپارتا</li>
+                    </ul>
                 </div>
-            </section>
 
-            <section id="world" class="section">
-                <h2><i class="fas fa-globe"></i> نقاط عطف تاریخ جهان</h2>
-                <p>رویدادهای سرنوشت‌ساز که مسیر تاریخ بشر را تغییر دادند</p>
-                <div class="timeline">
-                    <div class="timeline-item"><span class="year">۳۲۰۰ پیش از میلاد:</span><p>اختراع خط در میان‌رودان - آغاز تاریخ مکتوب</p></div>
-                    <div class="timeline-item"><span class="year">۴۷۶ میلادی:</span><p>سقوط امپراتوری روم غربی - آغاز قرون وسطی</p></div>
-                    <div class="timeline-item"><span class="year">۱۴۹۲ میلادی:</span><p>کشف قاره آمریکا توسط کریستف کلمب</p></div>
-                    <div class="timeline-item"><span class="year">۱۷۸۹ میلادی:</span><p>انقلاب فرانسه - آغاز عصر دموکراسی‌های مدرن</p></div>
-                    <div class="timeline-item"><span class="year">۱۹۴۵ میلادی:</span><p>پایان جنگ جهانی دوم و تأسیس سازمان ملل متحد</p></div>
+                <!-- شرق آسیا -->
+                <div class="era-category">
+                    <h3 class="era-title"><i class="fas fa-dragon"></i> شرق آسیا</h3>
+                    <ul class="era-list">
+                        <li class="era-item" onclick="openDetailModal('h10')">🐉 چین باستان</li>
+                        <li class="era-item" onclick="openDetailModal('h11')">🎎 ژاپن فئودالی</li>
+                        <li class="era-item" onclick="openDetailModal('h12')">☸ هند باستان</li>
+                        <li class="era-item" onclick="openDetailModal('h13')">🗿 تمدن مایا</li>
+                    </ul>
                 </div>
-            </section>
 
-            <section id="science" class="section">
-                <h2><i class="fas fa-flask"></i> انقلاب‌های علمی</h2>
-                <p>دستاوردهای شگفت‌انگیز که درک ما از جهان را متحول کردند</p>
-                <div class="timeline">
-                    <div class="timeline-item"><span class="year">۱۶۸۷ میلادی:</span><p>ایزاک نیوتن قوانین حرکت و گرانش را در کتاب "اصول" منتشر کرد</p></div>
-                    <div class="timeline-item"><span class="year">۱۸۵۹ میلادی:</span><p>چارلز داروین نظریه تکامل را در "منشأ گونه‌ها" ارائه داد</p></div>
-                    <div class="timeline-item"><span class="year">۱۹۰۵ میلادی:</span><p>آلبرت اینشتین نظریه نسبیت خاص را مطرح کرد</p></div>
-                    <div class="timeline-item"><span class="year">۱۹۵۳ میلادی:</span><p>کشف ساختار DNA توسط واتسون، کریک و فرانکلین</p></div>
-                    <div class="timeline-item"><span class="year">۱۹۹۰ میلادی:</span><p>پرتاب تلسکوپ فضایی هابل به فضا</p></div>
+                <!-- قرون وسطی -->
+                <div class="era-category">
+                    <h3 class="era-title"><i class="fas fa-fort-awesome"></i> قرون وسطی</h3>
+                    <ul class="era-list">
+                        <li class="era-item" onclick="openDetailModal('h14')">⚔ امپراتوری بیزانس</li>
+                        <li class="era-item" onclick="openDetailModal('h15')">🕌 امپراتوری عثمانی</li>
+                        <li class="era-item" onclick="openDetailModal('h16')">🏰 اروپای فئودالی</li>
+                        <li class="era-item" onclick="openDetailModal('h17')">✝ جنگ‌های صلیبی</li>
+                    </ul>
                 </div>
-            </section>
 
-            <section id="art" class="section">
-                <h2><i class="fas fa-palette"></i> تاریخ هنر جهان</h2>
-                <p>تکامل بیان هنری از غارنگاره‌ها تا هنر دیجیتال</p>
-                <div class="timeline">
-                    <div class="timeline-item"><span class="year">۱۵۰۰۰ پیش از میلاد:</span><p>نقاشی‌های غار لاسکو در فرانسه</p></div>
-                    <div class="timeline-item"><span class="year">۱۵۰۴ میلادی:</span><p>میكلانژ تندیس داوود را تکمیل کرد</p></div>
-                    <div class="timeline-item"><span class="year">۱۸۸۸ میلادی:</span><p>ون گوگ تابلوی "شب پرستاره" را خلق کرد</p></div>
-                    <div class="timeline-item"><span class="year">۱۹۰۷ میلادی:</span><p>پابلو پیکاسو سبک کوبیسم را با تابلوی "دوشیزگان آوینیون" بنیان گذاشت</p></div>
+                <!-- دوره مدرن -->
+                <div class="era-category">
+                    <h3 class="era-title"><i class="fas fa-industry"></i> دوره مدرن</h3>
+                    <ul class="era-list">
+                        <li class="era-item" onclick="openDetailModal('h18')">🔬 رنسانس</li>
+                        <li class="era-item" onclick="openDetailModal('h19')">🏭 انقلاب صنعتی</li>
+                        <li class="era-item" onclick="openDetailModal('h20')">🌍 جنگ‌های جهانی</li>
+                        <li class="era-item" onclick="openDetailModal('h21')">🚀 عصر فضا</li>
+                    </ul>
                 </div>
-            </section>
-
-            <section id="war" class="section">
-                <h2><i class="fas fa-shield-alt"></i> جنگ‌های بزرگ تاریخ</h2>
-                <p>نبردهایی که مرزهای جهان را تغییر دادند</p>
-                <div class="timeline">
-                    <div class="timeline-item"><span class="year">۴۹۰ پیش از میلاد:</span><p>نبرد ماراتون - یونان باستان در برابر امپراتوری پارس</p></div>
-                    <div class="timeline-item"><span class="year">۱۰۶۶ میلادی:</span><p>نبرد هستینگز - نورمن‌ها انگلستان را فتح کردند</p></div>
-                    <div class="timeline-item"><span class="year">۱۸۱۵ میلادی:</span><p>نبرد واترلو - پایان امپراتوری ناپلئون</p></div>
-                    <div class="timeline-item"><span class="year">۱۹۱۴-۱۹۱۸ میلادی:</span><p>جنگ جهانی اول - اولین جنگ بزرگ جهانی</p></div>
-                    <div class="timeline-item"><span class="year">۱۹۳۹-۱۹۴۵ میلادی:</span><p>جنگ جهانی دوم - مرگبارترین جنگ تاریخ</p></div>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <div class="quote">"تاریخ، فلسفه‌ای است با مثال‌هایی از فضیلت و رذیلت"</div>
-            <p>~ لرد بولینگ بروک ~</p>
-            <div style="margin-top: 2rem;">
-                <p><strong>© ۲۰۲۴ دایرةالمعارف تاریخ جهان</strong></p>
-                <p>طراحی و توسعه توسط کیارش سهولی</p>
-                <p style="margin-top: 1rem; color: var(--accent);"><i class="fas fa-heart"></i> ساخته شده با عشق به تاریخ و دانش</p>
             </div>
-        </footer>
+        </section>
+
+        <!-- بخش‌های دیگر -->
+        <section id="science" class="content-section">
+            <h2 class="section-header"><i class="fas fa-atom"></i> علم و دانش</h2>
+            <div style="text-align: center; padding: 3rem;">
+                <h3>به زودی...</h3>
+                <p>محتوای بخش علم و دانش در حال آماده‌سازی است</p>
+            </div>
+        </section>
+
+        <section id="games" class="content-section">
+            <h2 class="section-header"><i class="fas fa-chess"></i> بازی‌های فکری</h2>
+            <div style="text-align: center; padding: 3rem;">
+                <h3>به زودی...</h3>
+                <p>محتوای بخش بازی‌های فکری در حال آماده‌سازی است</p>
+            </div>
+        </section>
+
+        <section id="music" class="content-section">
+            <h2 class="section-header"><i class="fas fa-headphones"></i> موزیک و سرگرمی</h2>
+            <div style="text-align: center; padding: 3rem;">
+                <h3>پخش کننده موسیقی در بالای صفحه فعال است</h3>
+                <p>از پخش کننده در بخش بالای سایت استفاده کنید</p>
+            </div>
+        </section>
+
+        <!-- بخش فروشگاه -->
+        <section id="shop" class="content-section">
+            <h2 class="section-header"><i class="fas fa-shopping-cart"></i> فروشگاه مطفا کالا</h2>
+            <div style="text-align: center; padding: 2rem;">
+                <div style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    <p>🎯 <strong>فروشگاه اینترنتی مطفا کالا</strong></p>
+                    <p>🛒 محصولات با کیفیت با بهترین قیمت</p>
+                    <p>🚚 ارسال سریع به تمام نقاط کشور</p>
+                    <p>⭐ ضمانت بازگشت کالا</p>
+                </div>
+                
+                <a href="https://motafa-kala.com" class="banner-btn" target="_blank" style="font-size: 1.3rem; padding: 1.2rem 3rem;">
+                    <i class="fas fa-external-link-alt"></i>
+                    ورود به سایت اصلی مطفا کالا
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <!-- مودال برای جزئیات -->
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeDetailModal()">×</button>
+            <div id="detailModal-content">
+                <!-- محتوای مودال اینجا لود میشه -->
+            </div>
+        </div>
     </div>
 
     <script>
-        function searchHistory() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            if (searchTerm.trim() === '') {
-                alert('لطفاً عبارت مورد نظر برای جستجو را وارد کنید');
-                return;
+        // داده‌های جزئیات تاریخ
+        const historyData = {
+            'h1': {
+                title: '👑 امپراتوری هخامنشی',
+                content: `
+                    <div class="modal-header">
+                        <h2 class="modal-title">👑 امپراتوری هخامنشی</h2>
+                        <p><strong>دوره: ۵۵۰-۳۳۰ پیش از میلاد</strong></p>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-image">👑</div>
+                        
+                        <h3>پادشاهان مهم:</h3>
+                        <ul>
+                            <li><strong>کوروش بزرگ</strong> (بنیان‌گذار) - فاتح بابل و منشور حقوق بشر</li>
+                            <li><strong>داریوش بزرگ</strong> - سازنده تخت جمشید و راه‌شاهی</li>
+                            <li><strong>خشایارشا</strong> - جنگ‌های ایران و یونان</li>
+                        </ul>
+                        
+                        <h3>دستاوردها:</h3>
+                        <ul>
+                            <li>ساخت تخت جمشید (پرسپولیس)</li>
+                            <li>ایجاد راه‌شاهی (۲۵۰۰ کیلومتر)</li>
+                            <li>منشور حقوق بشر کوروش</li>
+                            <li>سیستم اداری پیشرفته</li>
+                            <li>سکه داریک</li>
+                        </ul>
+                        
+                        <h3>قلمرو:</h3>
+                        <p>از هند تا مصر و از دریای اژه تا آسیای مرکزی</p>
+                    </div>
+                `
+            },
+            'h2': {
+                title: '🏺 امپراتوری اشکانی',
+                content: `
+                    <div class="modal-header">
+                        <h2 class="modal-title">🏺 امپراتوری اشکانی</h2>
+                        <p><strong>دوره: ۲۴۷ پیش از میلاد - ۲۲۴ پس از میلاد</strong></p>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-image">🏺</div>
+                        
+                        <h3>ویژگی‌ها:</h3>
+                        <ul>
+                            <li>بازپس‌گیری ایران از سلوکیان</li>
+                            <li>پایتخت: تیسفون</li>
+                            <li>شکست کراسوس رومی در جنگ حران</li>
+                        </ul>
+                        
+                        <h3>دستاوردها:</h3>
+                        <ul>
+                            <li>ایجاد سیستم فئودالی</li>
+                            <li>توسعه تجارت جاده ابریشم</li>
+                            <li>ساخت شهرهای جدید</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'h6': {
+                title: '🏛 امپراتوری روم',
+                content: `
+                    <div class="modal-header">
+                        <h2 class="modal-title">🏛 امپراتوری روم</h2>
+                        <p><strong>دوره: ۲۷ پیش از میلاد - ۴۷۶ پس از میلاد</strong></p>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-image">🏛</div>
+                        
+                        <h3>دوره‌های مهم:</h3>
+                        <ul>
+                            <li><strong>جمهوری روم</strong> (۵۰۹-۲۷ پ.م)</li>
+                            <li><strong>امپراتوری روم</strong> (۲۷ پ.م-۴۷۶ م)</li>
+                            <li><strong>امپراتوری روم شرقی</strong> (۳۳۰-۱۴۵۳ م)</li>
+                        </ul>
+                        
+                        <h3>دستاوردها:</h3>
+                        <ul>
+                            <li>ساخت کولوسئوم</li>
+                            <li>شبکه جاده‌های پیشرفته</li>
+                            <li>قوانین مدون رومی</li>
+                            <li>معماری و مهندسی عمران</li>
+                            <li>سیستم آبرسانی و فاضلاب</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'h10': {
+                title: '🐉 چین باستان',
+                content: `
+                    <div class="modal-header">
+                        <h2 class="modal-title">🐉 چین باستان</h2>
+                        <p><strong>تمدن ۵۰۰۰ ساله</strong></p>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-image">🐉</div>
+                        
+                        <h3>سلسله‌های مهم:</h3>
+                        <ul>
+                            <li><strong>شانگ</strong> (۱۶۰۰-۱۰۴۶ پ.م) - اختراع خط</li>
+                            <li><strong>ژو</strong> (۱۰۴۶-۲۵۶ پ.م) - فلسفه کنفوسیوس</li>
+                            <li><strong>هان</strong> (۲۰۶ پ.م-۲۲۰ م) - توسعه جاده ابریشم</li>
+                            <li><strong>تانگ</strong> (۶۱۸-۹۰۷ م) - عصر طلایی</li>
+                        </ul>
+                        
+                        <h3>اختراعات:</h3>
+                        <ul>
+                            <li>کاغذ و چاپ</li>
+                            <li>باروت</li>
+                            <li>قطبنما</li>
+                            <li>ابریشم</li>
+                            <li>ساعت آبی</li>
+                        </ul>
+                    </div>
+                `
             }
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            alert('جستجو برای: ' + searchTerm + '\n\nاین قابلیت در نسخه‌های بعدی کامل خواهد شد. برای حالا می‌توانید از منوی بالا استفاده کنید.');
-        }
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+        };
+
+        // سیستم پخش موسیقی
+        const songs = [
+            { name: 'علی زند وکیلی - جاده', type: 'ایرانی', duration: '۳:۴۵' },
+            { name: 'The Weeknd - Blinding Lights', type: 'خارجی', duration: '۳:۲۰' },
+            { name: 'محسن یگانه - مگه نه', type: 'ایرانی', duration: '۴:۱۵' },
+            { name: 'Dua Lipa - Don\'t Start Now', type: 'خارجی', duration: '۳:۰۳' }
+        ];
+
+        let currentSong = 0;
+        let isPlaying = false;
+
+        function playSong(index) {
+            currentSong = index;
+            document.getElementById('nowPlaying').textContent = songs[index].name;
+            
+            document.querySelectorAll('.song-item').forEach(item => {
+                item.classList.remove('playing');
             });
+            
+            document.querySelectorAll('.song-item')[index].classList.add('playing');
+            
+            isPlaying = true;
+            document.getElementById('playBtn').className = 'fas fa-pause';
+        }
+
+        function playPause() {
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                document.getElementById('playBtn').className = 'fas fa-pause';
+                if (document.getElementById('nowPlaying').textContent === 'آهنگ انتخاب نشده') {
+                    playSong(0);
+                }
+            } else {
+                document.getElementById('playBtn').className = 'fas fa-play';
+            }
+        }
+
+        function nextSong() {
+            currentSong = (currentSong + 1) % songs.length;
+            playSong(currentSong);
+        }
+
+        // تنظیمات
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        function toggleGrayscale() {
+            document.body.classList.toggle('grayscale');
+        }
+
+        // توابع مدیریت مودال
+        function openDetailModal(id) {
+            const data = historyData[id];
+            if (data) {
+                document.getElementById('detailModal-content').innerHTML = data.content;
+                document.getElementById('detailModal').classList.add('active');
+            } else {
+                document.getElementById('detailModal-content').innerHTML = `
+                    <div class="modal-header">
+                        <h2 class="modal-title">📚 محتوای در حال توسعه</h2>
+                    </div>
+                    <div class="modal-body">
+                        <p>محتوای این بخش به زودی اضافه خواهد شد.</p>
+                        <p>ما در حال تکمیل اطلاعات تاریخی هستیم.</p>
+                    </div>
+                `;
+                document.getElementById('detailModal').classList.add('active');
+            }
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').classList.remove('active');
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // بستن مودال با کلیک خارج از آن
+        document.getElementById('detailModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeDetailModal();
+            }
         });
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') { searchHistory(); }
+
+        // نمایش بخش تاریخ به صورت پیش‌فرض
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('history');
         });
     </script>
 </body>
 </html>
-        
